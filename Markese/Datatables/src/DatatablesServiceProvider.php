@@ -24,5 +24,10 @@ class DatatablesServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        \App::bind('Datatables', function()
+        {
+            return "HERE";
+            return \Markese\Datatables\Datatables();
+        });
     }
 }

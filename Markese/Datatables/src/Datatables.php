@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libs\Datatables;
+namespace Markese\Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder as Eloquent;
 use Illuminate\Database\Query\Builder;

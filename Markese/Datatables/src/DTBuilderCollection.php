@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libs\Datatables;
+namespace Markese\Datatables;
 
 use Illuminate\Support\Collection;
 
