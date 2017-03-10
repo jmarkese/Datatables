@@ -45,7 +45,7 @@ class DTRequest
             $this->searchColumns = collect($request->columns)
                 ->where('searchable', 'true')
                 ->map(function ($col) {
-                    return ($col['name'] !== '') ? $col['name'] : $col['data'];
+                    return !empty($col['name']) ? $col['name'] : $col['data'];
                 });
 
     }

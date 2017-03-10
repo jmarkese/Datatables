@@ -27,7 +27,7 @@ class DTBuilderCollection extends DTBuilderTemplate
                 $this->obj->filter(function ($value, $key) use ($columns, $term) {
                     $search = "";
                     foreach ($columns as $col) {
-                        $search .= " " . strtolower($value->$col);
+                        if ( isset( $value->$col ) ) $search .= " " . strtolower($value->$col);
                     }
                     return strpos($search, $term);
                 })

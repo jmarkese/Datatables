@@ -18,12 +18,15 @@ class Datatables
 
         // DTBuilder for Eloquent queries: Illuminate\Database\Eloquent\Builder
         if ($obj instanceof Eloquent) {
-            return (new DTBuilderEloquent($obj, $request, $collectionNameIn))->buildDT();
+            //return (new DTBuilderEloquent($obj, $request, $collectionNameIn))->buildDT();
+            return (new DTBuilderCollection($obj->get(), $request, $collectionNameIn))->buildDT();
+
         }
 
         // DTBuilder for Query Builder queries: Illuminate\Database\Query\Builder
         if ($obj instanceof Builder) {
-            return (new DTBuilderBuilder($obj, $request, $collectionNameIn))->buildDT();
+            //return (new DTBuilderBuilder($obj, $request, $collectionNameIn))->buildDT();
+            return (new DTBuilderCollection($obj->get(), $request, $collectionNameIn))->buildDT();
         }
 
         // DTBuilder for Laravel collections: Illuminate\Support\Collection
