@@ -18,33 +18,21 @@ class DTBuilderCollection extends DTBuilderTemplate
     {
         $terms = $this->dtRequest->searchTerms;
         $columns = $this->dtRequest->searchColumns;
-        $temp = collect();
-        //$collection = $this->obj;
-        $collection = $temp;
-
-        foreach($this->obj as $e){
-            $temp->push(array_dot($e->toArray()));
-        }
 
         foreach ($terms as $term) {
-            if (empty($term) || empty($temp)) {
+            if (empty($term)) {
                 continue;
             }
-            $temp = $temp->intersect(
-                $temp->filter(function ($value, $key) use ($columns, $term) {
+            $this->obj = $this->obj->intersect(
+                $this->obj->filter(function ($value, $key) use ($columns, $term) {
                     $search = "";
                     foreach ($columns as $col) {
-                        if (isset($value->$col)) $search .= " " . strtolower($value->$col);
+                        if ( isset( $value->$col ) ) $search .= " " . strtolower($value->$col);
                     }
                     return strpos($search, $term);
                 })
             );
         }
-
-        $this->obj->filter(function ($value, $key) use ($temp) {
-            return $this->obj->id === $temp->id;
-        });
-
     }
 
     protected function sort(): void
