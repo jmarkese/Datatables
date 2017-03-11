@@ -20,10 +20,6 @@ class DTBuilderCollection extends DTBuilderTemplate
         $columns = $this->dtRequest->searchColumns;
 
         foreach ($terms as $term) {
-            if (empty($term)) {
-                //continue;
-            }
-
             $this->obj = $this->obj->intersect(
                 $this->obj->filter(function ($value, $key) use ($columns, $term) {
                     foreach ($columns as $col) {
