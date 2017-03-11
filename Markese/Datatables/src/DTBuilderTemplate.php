@@ -25,7 +25,7 @@ abstract class DTBuilderTemplate implements DTBuilder
 
     abstract protected function paginate(): void;
 
-    abstract protected function buildReponse(): DatatablesServerSide;
+    abstract protected function buildResponse(): DatatablesServerSide;
 
     protected function count(): int
     {
@@ -51,6 +51,6 @@ abstract class DTBuilderTemplate implements DTBuilder
             $this->paginate();
         }
 
-        return $this->buildReponse();
+        return $this->buildResponse();
     }
 }
