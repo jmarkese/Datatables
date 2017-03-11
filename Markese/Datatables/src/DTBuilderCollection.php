@@ -19,15 +19,18 @@ class DTBuilderCollection extends DTBuilderTemplate
         $terms = $this->dtRequest->searchTerms;
         $columns = $this->dtRequest->searchColumns;
 
+
         foreach ($terms as $term) {
             if (empty($term)) {
                 continue;
             }
+
             $this->obj = $this->obj->intersect(
                 $this->obj->filter(function ($value, $key) use ($columns, $term) {
                     $search = "";
                     foreach ($columns as $col) {
-                        if ( isset( $value->$col ) ) $search .= " " . strtolower($value->$col);
+                        $data = data_get($value, $col);
+                        if ( !is_null($data) ) $search .= " " . strtolower($data);
                     }
                     return strpos($search, $term);
                 })
