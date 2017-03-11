@@ -19,20 +19,21 @@ class DTBuilderCollection extends DTBuilderTemplate
         $terms = $this->dtRequest->searchTerms;
         $columns = $this->dtRequest->searchColumns;
 
-
         foreach ($terms as $term) {
             if (empty($term)) {
-                continue;
+                //continue;
             }
 
             $this->obj = $this->obj->intersect(
                 $this->obj->filter(function ($value, $key) use ($columns, $term) {
-                    $search = "";
                     foreach ($columns as $col) {
-                        $data = data_get($value, $col);
-                        if ( !is_null($data) ) $search .= " " . strtolower($data);
+                        $data = isset($value->col) ? $value->col : data_get($value, $col);
+                        $data = !is_array($data) ? $data : implode(" ", $data);
+                        if ( stristr( $data, $term ) !== false ) {
+                            return true;
+                        }
                     }
-                    return strpos($search, $term);
+                    return false;
                 })
             );
         }
@@ -50,7 +51,7 @@ class DTBuilderCollection extends DTBuilderTemplate
         $this->obj = $this->obj->forPage($req->page, $req->length)->values();
     }
 
-    protected function buildReponse(): DatatablesServerSide
+    protected function buildResponse(): DatatablesServerSide
     {
         return new DTResponse($this->obj, $this->recordsTotal, $this->recordsFiltered, $this->dtRequest->draw, $this->collectionName);
     }

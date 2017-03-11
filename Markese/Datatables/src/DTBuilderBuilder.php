@@ -43,7 +43,7 @@ class DTBuilderBuilder extends DTBuilderTemplate
         $this->obj->offset($req->start)->limit($req->length);
     }
 
-    protected function buildReponse(): DatatablesServerSide
+    protected function buildResponse(): DatatablesServerSide
     {
         $collection = collect($this->obj->get());
         return new DTResponse($collection, $this->recordsTotal, $this->recordsFiltered, $this->dtRequest->draw, $this->collectionName);
