@@ -1,5 +1,5 @@
 {
-    "name": "Markese/Datatables",
+    "name": "markese/datatables",
     "type": "library",
     "description": "Create responses compatible with Datatables for JQuery from Eloquent and Query Builder and Laravel Collections.",
     "keywords": [
