@@ -32,7 +32,7 @@ $ composer require markese/datatables
 public function datatables(Request $request)
 {
     $users = Users::with('groups.roles');
-    $response = \Markese\Datatables::response($requestIn, $users);
+    $response = \Markese\Datatables::response($users, $request);
     return $response->toJson();
 }
 ```
