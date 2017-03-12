@@ -29,7 +29,7 @@ $ composer require markese/datatables
 
 ``` php
 // Laravel:
-public function datatables(Request $request)
+public function datatablesExample (Request $request)
 {
     $users = Users::with('groups.roles');
     $response = \Markese\Datatables::response($users, $request);
@@ -41,7 +41,7 @@ public function datatables(Request $request)
 $('#example').DataTable( {
     "serverSide": true,
     "processing": true,
-    "ajax": "example",
+    "ajax": "datatablesexample",
     columns : [
         { "data": "id", "title": "Id", "name": "id" },
         { "data": "name", "title": "Name", "name": "name" },
