@@ -1,11 +1,6 @@
 {
     "name": "markese/datatables",
     "version":"1.0.0",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.0"
-        }
-    },
     "type": "library",
     "description": "Create HTTP responses compatible with Datatables for JQuery from Eloquent Models, Query Builders, and Laravel Collections.",
     "keywords": [
