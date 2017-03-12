@@ -1,7 +1,7 @@
 {
     "name": "markese/datatables",
     "type": "library",
-    "description": "Create responses compatible with Datatables for JQuery from Eloquent and Query Builder and Laravel Collections.",
+    "description": "Create HTTP responses compatible with Datatables for JQuery from Eloquent Models, Query Builders, and Laravel Collections.",
     "keywords": [
         "Markese",
         "Datatables"
@@ -18,7 +18,7 @@
     ],
     "require": {
         "illuminate/support": "~5.1",
-        "php" : "~5.6|~7.0"
+        "php" : "~7.0"
     },
     "require-dev": {
         "phpunit/phpunit" : "~4.0||~5.0",
@@ -27,11 +27,6 @@
     "autoload": {
         "psr-4": {
             "Markese\\Datatables\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Markese\\Datatables\\": "tests"
         }
     },
     "scripts": {
