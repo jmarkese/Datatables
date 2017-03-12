@@ -29,10 +29,12 @@ $ composer require markese/datatables
 
 ``` php
 // Laravel:
-$users = \Users::with('roles.groups');
-$response = \Markese\Datatables::response($requestIn, $users);
-return $response->toJson();
-
+public function datatables(Request $request)
+{
+    $users = \Users::with('groups.roles');
+    $response = \Markese\Datatables::response($requestIn, $users);
+    return $response->toJson();
+}
 ```
 ``` js
 // Datatables:
@@ -44,8 +46,8 @@ $('#example').DataTable( {
         { "data": "id", "title": "Id", "name": "id" },
         { "data": "name", "title": "Name", "name": "name" },
         { "data": "email", "title": "Number", "name": "email" },
-        { "data": "roles[].title", "title": "Roles", "name": "roles.*.title" },
-        { "data": "roles[].groups[].type", "title": "Cyan", "name": "roles.*.groups.*.type" }
+        { "data": "groups[].name", "title": "Groups", "name": "groups.*.name" },
+        { "data": "groups[].roles[].title", "title": "Roles", "name": "groups.*.roles.*.title" }
     ]
 } );
 ```
