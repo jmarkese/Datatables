@@ -16,21 +16,14 @@ class Datatables
             throw new \InvalidArgumentException("Invalid Datatables Request: ".$e);
         }
 
-        // DTBuilder for Eloquent queries: Illuminate\Database\Eloquent\Builder
         if ($obj instanceof Eloquent) {
-            //Collections has better integration features for now, so we'll use that
-            //return (new DTBuilderEloquent($obj, $request, $collectionNameIn))->buildDT();
             $obj = $obj->get();
         }
 
-        // DTBuilder for Query Builder queries: Illuminate\Database\Query\Builder
         if ($obj instanceof Builder) {
-            //Collections has better integration for now, so we'll use that
-            //return (new DTBuilderBuilder($obj, $request, $collectionNameIn))->buildDT();
             $obj = $obj->get();
         }
 
-        // DTBuilder for Laravel collections: Illuminate\Support\Collection
         if ($obj instanceof Collection) {
             return (new DTBuilderCollection($obj, $request, $collectionNameIn))->buildDT();
         }
