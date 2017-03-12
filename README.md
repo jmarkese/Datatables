@@ -31,7 +31,7 @@ $ composer require markese/datatables
 // Laravel:
 public function datatables(Request $request)
 {
-    $users = \Users::with('groups.roles');
+    $users = Users::with('groups.roles');
     $response = \Markese\Datatables::response($requestIn, $users);
     return $response->toJson();
 }
