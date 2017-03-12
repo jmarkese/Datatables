@@ -1,4 +1,4 @@
-# datatables
+# Datatables for Laravel
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -7,21 +7,13 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-**Note:** Replace ```John Markese``` ```jmarkese``` ```http://www.johnmarkese.com``` ```john.markese@gmail.com``` ```jmarkese``` ```datatables``` ```A package for Laravel that integrates Eloquent queries and Illuminate Collections into Datatables for JQuery.``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+A package for Laravel that integrates Eloquent queries and Illuminate Collections into Datatables for JQuery.
 
 ## Structure
 
-If any of the following are applicable to your project, then the directory structure should follow industry best practises by being named the following.
-
 ```
-bin/        
-config/
 src/
 tests/
-vendor/
 ```
 
 
@@ -30,14 +22,32 @@ vendor/
 Via Composer
 
 ``` bash
-$ composer require jmarkese/datatables
+$ composer require markese/datatables
 ```
 
 ## Usage
 
 ``` php
-$skeleton = new jmarkese\datatables();
-echo $skeleton->echoPhrase('Hello, League!');
+// Laravel:
+$users = \Users::with('roles.groups');
+$response = \Markese\Datatables::response($requestIn, $users);
+return $response->toJson();
+
+```
+``` js
+// Datatables:
+$('#example').DataTable( {
+    "serverSide": true,
+    "processing": true,
+    "ajax": "example",
+    columns : [
+        { "data": "id", "title": "Id", "name": "id" },
+        { "data": "name", "title": "Name", "name": "name" },
+        { "data": "email", "title": "Number", "name": "email" },
+        { "data": "roles[].title", "title": "Roles", "name": "roles.*.title" },
+        { "data": "roles[].groups[].type", "title": "Cyan", "name": "roles.*.groups.*.type" }
+    ]
+} );
 ```
 
 ## Change log
