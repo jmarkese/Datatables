@@ -5,5 +5,5 @@ use Illuminate\Http\Request;
 
 interface DTBuilder
 {
-    public function buildDT(): DatatablesServerSide;
+    public function buildDT(): DTResponse;
 }

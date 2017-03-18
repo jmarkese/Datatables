@@ -32,7 +32,7 @@ abstract class DTBuilderTemplate implements DTBuilder
         return $this->obj->count();
     }
 
-    final public function buildDT(): DatatablesServerSide
+    final public function buildDT(): DTResponse
     {
         $this->recordsTotal = $this->count();
 
