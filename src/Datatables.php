@@ -1,7 +1,6 @@
 <?php
 
 namespace Markese\Datatables;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder as Eloquent;
 use Illuminate\Database\Query\Builder;
@@ -19,7 +18,7 @@ class Datatables
      * @param null|string|null $collectionNameIn
      * @return DatatablesServerSide
      */
-    public static function response ($obj, Request $requestIn, ?string $collectionNameIn = null): DTResponse
+    public static function response ($obj, Request $requestIn, ?string $collectionNameIn = null): DatatablesServerSide
     {
         try {
             $request = new DTRequest($requestIn);
