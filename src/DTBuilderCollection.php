@@ -36,7 +36,7 @@ class DTBuilderCollection extends DTBuilderTemplate
         $terms = $this->dtRequest->searchTerms;
         $columns = $this->dtRequest->searchColumns;
 
-        // Iteravely intersect the Collection with a filtered version of itself.
+        // Iteratively intersect the Collection with a filtered version of itself.
         foreach ($terms as $term) {
 
             $this->obj = $this->obj->intersect(
