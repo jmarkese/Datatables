@@ -1,6 +1,7 @@
 <?php
 
 namespace Markese\Datatables;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder as Eloquent;
 use Illuminate\Database\Query\Builder;
@@ -39,7 +40,8 @@ class Datatables
         }
 
         throw new \InvalidArgumentException(
-            'Expects Illuminate\Database\Eloquent\Builder, Illuminate\Database\Query\Builder, or Illuminate\Support\Collection. Input was: '.get_class($obj)
+            'Expects Illuminate\Database\Eloquent\Builder, Illuminate\Database\Query\Builder, '.
+            'or Illuminate\Support\Collection. Input was: '.get_class($obj)
         );
     }
 
