@@ -29,24 +29,42 @@ $ composer require markese/datatables
 
 ``` php
 // Laravel:
-public function datatablesExample (Request $request)
+namespace App\Http\Controllers;
+use  Markese\Datatables\Datatables;
+
+class Controller extends BaseController
 {
-    $users = Users::with('groups.roles');
-    $response = \Markese\Datatables::response($users, $request);
-    return $response->toJson();
+    public function datatablesExample (Request $request)
+    {
+        $users = Users::query();
+        return Datatables::response($users, $request);
+    }
 }
 ```
-``` js
+
+``` javascript
 // Datatables:
 $('#example').DataTable( {
     "serverSide": true,
     "processing": true,
     "ajax": "datatablesexample",
     columns : [
-        { "data": "id", "title": "Id", "name": "id" },
+        // The "name" property in the column initialization for Model attributes are optional.
+
+        // This works...
+        { "data": "id", "title": "Id" },
+
+        // And so does this...
         { "data": "name", "title": "Name", "name": "name" },
         { "data": "email", "title": "Number", "name": "email" },
+
+        // The "name" properties in your Datatables column initialization
+        // will eager load the relations of the Model you are querying against 
+        // when you use Laravel dot notation...
         { "data": "groups[].name", "title": "Groups", "name": "groups.*.name" },
+
+        // The "data" properties in the column initialization represent the displayed data
+        // which is accessible using standard JavaScript bracket notation...
         { "data": "groups[].roles[].title", "title": "Roles", "name": "groups.*.roles.*.title" }
     ]
 } );
