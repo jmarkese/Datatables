@@ -2,7 +2,7 @@
 
 [![Software License][ico-license]](LICENSE.md)
 
-A package for Laravel that integrates Eloquent queries and Illuminate Collections into Datatables for JQuery.
+A package for Laravel that integrates Eloquent queries and Illuminate Collections into [Datatables for JQuery](https://datatables.net/).
 
 ## Structure
 
